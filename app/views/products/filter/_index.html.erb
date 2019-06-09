@@ -1,0 +1,83 @@
+  <div class="col-sm-2">
+    <div class="card">
+      <%= form_for :filter, url: apply_filter_products_path , method: :post do |f| %>
+        <article class="card-group-item">
+          <header class="card-header">
+            <h6 class="title">Sort By</h6>
+          </header>
+          <div class="filter-content">
+            <div class="card-body">
+              <%= f.select("sort_by", sorting_filters, { selected: params[:sort_by], include_blank: false, prompt: 'Select Option' }, class: 'form-control') %>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-group-item">
+          <header class="card-header">
+            <h6 class="title">Price</h6>
+          </header>
+          <div class="filter-content">
+            <div class="card-body">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label>Min</label>
+                  <%= f.number_field :min_price, value: params[:min_price], class: 'form-control', placeholder: '0', min: 0 %>
+                </div>
+                <div class="form-group col-md-6 text-right">
+                  <label>Max</label>
+                  <%= f.number_field :max_price, value: params[:max_price], class: 'form-control', placeholder: '100000', max: 100000 %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card-group-item">
+          <header class="card-header">
+            <h6 class="title">Brand </h6>
+          </header>
+          <div class="filter-content">
+            <div class="card-body">
+              <% brand_filters.each do |brand| %>
+                <%= render 'products/filter/check_box', f: f, value: brand, filter_type: 'brand' %>
+              <% end %>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-group-item">
+          <header class="card-header">
+            <h6 class="title">Internal Storage </h6>
+          </header>
+          <div class="filter-content">
+            <div class="card-body">
+              <% internal_memory_filters.each do |option| %>
+                <%= render 'products/filter/check_box', f: f, value: option, filter_type: 'internal_memory' %>
+              <% end %>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-group-item">
+          <header class="card-header">
+            <h6 class="title">RAM </h6>
+          </header>
+          <div class="filter-content">
+            <div class="card-body">
+              <% ram_filters.each do |option| %>
+                <%= render 'products/filter/check_box', f: f, value: option, filter_type: 'ram' %>
+              <% end %>
+            </div>
+          </div>
+        </article>
+        <hr>
+        <div class="form-group">
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Filter Products</button>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+
+
+  </div>

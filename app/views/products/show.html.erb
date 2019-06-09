@@ -1,0 +1,57 @@
+<!-- Page Content -->
+<div class=" ">
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><%= link_to 'Back', products_link %></li>
+    <li class="breadcrumb-item active" aria-current="page">Product Details</li>
+  </ol>
+</nav>
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-6 text-center">
+      <img class="img-fluid" src="<%= @product.img_url %>">
+    </div>
+
+    <div class="col-md-6">
+      <ul>
+        <li><b>Model: </b><%= @product.model %></li>
+        <li><b>Brand: </b><%= @product.brand %></li>
+        <li><b>Price: </b><%= number_to_currency(@product.price, unit: "₹") %></li>
+        <li><b>Primary Camera: </b><%= @product.primary_camera %></li>
+        <li><b>Internal Memory: </b><%= @product.internal_memory %></li>
+        <li><b>Secondary Camera: </b><%= @product.secondary_camera %></li>
+        <li><b>RAM: </b><%= @product.ram %></li>
+        <li><b>CPU: </b><%= @product.cpu %></li>
+        <li><b>Battery: </b><%= @product.battery %></li>
+        <li><b>Colors: </b><%= @product.colors %></li>
+        <li><b>OS: </b><%= @product.os %></li>
+        <li><b>NFC: </b><%= @product.nfc %></li>
+        <li><b>GPS: </b><%= @product.gps %></li>
+        <li><b>GPU: </b><%= @product.gpu %></li>
+        <li><b>SIM: </b><%= @product.sim %></li>
+        <li><b>USB: </b><%= @product.usb %></li>
+        <li><b>Edge: </b><%= @product.edge %></li>
+        <li><b>GPRS: </b><%= @product.gprs %></li>
+        <li><b>WLAN: </b><%= @product.wlan %></li>
+        <li><b>Radio: </b><%= @product.radio %></li>
+        <li><b>Status: </b><%= @product.status %></li>
+        <li><b>Chipset: </b><%= @product.chipset %></li>
+        <li><b>Sensors: </b><%= @product.sensors %></li>
+        <li><b>Weight: </b><%= @product.weight_g %></li>
+        <li><b>Announced: </b><%= @product.announced %></li>
+        <li><b>Bluetooth: </b><%= @product.bluetooth %></li>
+        <li><b>Dimensions: </b><%= @product.dimentions %></li>
+        <li><b>Audio Jack: </b><%= @product.audio_jack %></li>
+        <li><b>Memory Card: </b><%= @product.memory_card %></li>
+        <li><b>Display Size: </b><%= @product.display_size %></li>
+        <li><b>Display Type: </b><%= @product.display_type %></li>
+        <li><b>Loud Speaker: </b><%= @product.loud_speaker %></li>
+        <li><b>Network Speed: </b><%= @product.network_speed %></li>
+        <li><b>Display Resolution: </b><%= @product.display_resolution %></li>
+        <li><b>Network Technology: </b><%= @product.network_technology %></li>
+      </ul>
+    </div>
+  </div>
+</div>

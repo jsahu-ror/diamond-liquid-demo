@@ -1,0 +1,88 @@
+<h1>Products</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Os</th>
+      <th>Cpu</th>
+      <th>Gps</th>
+      <th>Gpu</th>
+      <th>Nfc</th>
+      <th>Ram</th>
+      <th>Sim</th>
+      <th>Usb</th>
+      <th>Edge</th>
+      <th>Gprs</th>
+      <th>Wlan</th>
+      <th>Radio</th>
+      <th>Colors</th>
+      <th>Status</th>
+      <th>Chipset</th>
+      <th>Battery</th>
+      <th>Sensors</th>
+      <th>Weight G</th>
+      <th>Year</th>
+      <th>Bluetooth</th>
+      <th>Audio Jack</th>
+      <th>Dimensions</th>
+      <th>Memory Card</th>
+      <th>Display Size</th>
+      <th>Display Type</th>
+      <th>Loud Speaker</th>
+      <th>Network Speed</th>
+      <th>Primary Camera</th>
+      <th>Internal Memory</th>
+      <th>Approx Price Eur</th>
+      <th>Secondary Camera</th>
+      <th>Display Resolution</th>
+      <th>Network Technology</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+    <tr>
+      <td><%= product.brand %></td>
+      <td><%= product.model %></td>
+      <td><%= product.os %></td>
+      <td><%= product.cpu %></td>
+      <td><%= product.gps %></td>
+      <td><%= product.gpu %></td>
+      <td><%= product.nfc %></td>
+      <td><%= product.ram %></td>
+      <td><%= product.sim %></td>
+      <td><%= product.usb %></td>
+      <td><%= product.edge %></td>
+      <td><%= product.gprs %></td>
+      <td><%= product.wlan %></td>
+      <td><%= product.radio %></td>
+      <td><%= product.colors %></td>
+      <td><%= product.status %></td>
+      <td><%= product.chipset %></td>
+      <td><%= product.battery %></td>
+      <td><%= product.sensors %></td>
+      <td><%= product.weight_g %></td>
+      <td><%= product.announced %></td>
+      <td><%= product.bluetooth %></td>
+      <td><%= product.audio_jack %></td>
+      <td><%= product.dimentions %></td>
+      <td><%= product.memory_card %></td>
+      <td><%= product.display_size %></td>
+      <td><%= product.display_type %></td>
+      <td><%= product.loud_speaker %></td>
+      <td><%= product.network_speed %></td>
+      <td><%= product.primary_camera %></td>
+      <td><%= product.internal_memory %></td>
+      <td><%= product.approx_price_eur %></td>
+      <td><%= product.secondary_camera %></td>
+      <td><%= product.display_resolution %></td>
+      <td><%= product.network_technology %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= paginate @products, views_prefix: '.' %>

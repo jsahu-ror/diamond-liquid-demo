@@ -1,0 +1,37 @@
+<div class="container-box">
+  <nav class="navbar navbar-dark bg-dark" style="margin-bottom: 10px">
+    <a class="navbar-brand" href="/">HOME</a>
+    <%= link_to 'Download as .xlsx', products_link(format: :xlsx) %>
+  </nav>
+
+  <div class="container-fluid">
+  <div class="products row">
+    <%= render 'products/filter/index' %>
+    <div class="col-sm-10">
+      <% @products.each_slice(5) do |slice| %>
+      <div class="card-deck">
+        <% slice.each do |product| %>
+        <div class="card">
+          <%= link_to product_link(product.id) do %>
+          <img class="card-img-top" src="<%= product.img_url %>">
+          <%end %>
+          <div class="card-body">
+            <%= link_to product_link(product.id) do %>
+            <h5 class="card-title"><%= product.decorate.model %></h5>
+            <%end %>
+            <p class="card-text"><%= number_to_currency(product.price, unit: "₹") %></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <%= paginate @products, views_prefix: '.' %>
+  </div>
+</div>
+</div>

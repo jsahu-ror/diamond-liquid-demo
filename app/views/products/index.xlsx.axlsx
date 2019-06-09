@@ -1,0 +1,30 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: 'all_products') do |sheet|
+  sheet.add_row ['ID', 'Model', 'Brand', 'Price', 'Primary Camera', 'Internal Memory', 'Secondary Camera',
+                 'RAM', 'CPU', 'Battery', 'Colors', 'OS',
+                 'NFC', 'GPS', 'GPU', 'SIM', 'USB', 'Edge', 'GPRS',
+                 'WLAN', 'Radio', 'Status', 'Chipset', 'Sensors',
+                 'Weight', 'Announced', 'Bluetooth', 'Dimensions',
+                 'Audio Jack', 'Memory Card', 'Display Size', 'Display Type',
+                 'Loud Speaker', 'Network Speed', 'Display Resolution', 'Network Technology']
+
+  @products.in_batches(of: Product::BATCH_SIZE).each do |batch|
+    batch.decorate.each do |product|
+      sheet.add_row [
+        product.id, product.model, product.brand, number_to_currency(product.price, unit: '₹'), product.primary_camera,
+        product.internal_memory, product.secondary_camera, product.ram, product.cpu, product.battery,
+        product.colors, product.os, product.nfc, product.gps, product.gpu, product.sim, product.usb,
+        product.edge, product.gprs, product.wlan, product.radio, product.status, product.chipset,
+        product.sensors, product.weight_g, product.announced, product.bluetooth, product.dimentions,
+        product.audio_jack, product.memory_card, product.display_size, product.display_type,
+        product.loud_speaker, product.network_speed, product.display_resolution, product.network_technology
+      ]
+      sheet.add_hyperlink(
+        location: url_for(action: 'show', id: product.id, only_path: false),
+        ref: sheet.rows.last.cells.first
+      )
+    end
+  end
+end

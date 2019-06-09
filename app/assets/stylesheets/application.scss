@@ -1,1 +1,18 @@
 @import "bootstrap";
+
+.products {
+  .card-deck {
+    .card-img-top {
+      width: 150px;
+      margin-left: 20%;
+    }
+
+    .card {
+      padding: 10px;
+      max-width: 300px;
+    }
+
+    margin-bottom: 30px;
+
+  }
+}
