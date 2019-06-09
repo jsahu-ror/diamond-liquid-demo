@@ -1,24 +1,15 @@
-# README
+# Installation
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Install [Docker](https://www.docker.com/)
+1. Install [Docker Compose](https://docs.docker.com/compose/install/)
+1. run `make build`
+2. run `make db-seed`
+3. run `make server` and open `http://localhost:3000` in the browser
 
-Things you may want to cover:
+## Usage
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. `make build` to launch the stack for the first time
+1. `make server` to launch the stack
+1. `make down` to bring down all containers
+1. `make db-build-all` to create the DATABASE
+1. `make db-seed` to seed the DATABASE

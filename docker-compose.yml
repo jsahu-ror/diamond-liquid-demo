@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  database:
+    container_name: database
+    image: postgres:9.6-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - database_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    container_name: web
+    command: bundle exec rails server -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/diamond-liquid
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+    env_file:
+      - .env
+    tty: true
+    stdin_open: true
+
+volumes:
+  database_data:
