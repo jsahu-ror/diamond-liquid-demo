@@ -1,7 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'json'
+
+file = File.open Rails.root.join('db', 'dummy_data.json')
+data = JSON.parse(file.read)
+
+data.each_slice(Product::BATCH_SIZE) do |batch|
+  mobile_data = batch.each_with_object([]) do |record, records|
+    record.transform_keys!(&:downcase)
+    record.transform_values!(&:downcase)
+    record.transform_values!(&:strip)
+    attrs = record.select! { |k, _v| Product.column_names.include? k }
+    records.push(Product.new(attrs.merge(price: Random.rand(1000..80_000))))
+  end
+  Product.import(mobile_data)
+end
+
+puts 'Done'
