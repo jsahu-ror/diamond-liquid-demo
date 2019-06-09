@@ -1,0 +1,20 @@
+AllCops:
+  Exclude:
+  # Rubocop defaults
+  - vendor/**/*
+  - spec/**/*
+  - tmp/**/*
+  # Framework generated configuration files
+  - config/boot.rb
+  - config/application.rb
+  - config/environment.rb
+  - config/puma.rb
+  - config/spring.rb
+  - config/environments/development.rb
+  - config/environments/production.rb
+  - config/initializers/devise.rb
+  - config/initializers/backtrace_silencers.rb
+  - config/initializers/content_security_policy.rb
+  - test/application_system_test_case.rb
+  - bin/**/*
+  - db/schema.rb
